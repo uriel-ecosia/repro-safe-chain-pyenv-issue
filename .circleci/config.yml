@@ -24,11 +24,14 @@ jobs:
       - run:
           name: Setup
           command: |
-            ARBOR_PATH=$(pwd)/src/bin
-            echo "Adding \"$ARBOR_PATH\" to \$PATH..."
-            echo 'export PATH='"$ARBOR_PATH"':"$PATH"' >> "$BASH_ENV"
-            source "$BASH_ENV"
-            arbor --help
+            pushd $(git rev-parse --show-toplevel)
+              ARBOR_PATH="$(pwd)/tools/arbor/bin"
+              echo "Adding \"$ARBOR_PATH\" to \$PATH..."
+              echo 'export PATH='"$ARBOR_PATH"':"$PATH"' >> "$BASH_ENV"
+              source "$BASH_ENV"
+              echo "Running arbor to install deps..."
+              arbor --help
+            popd
 
 workflows:
   version: 2
