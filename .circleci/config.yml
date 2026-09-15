@@ -30,7 +30,7 @@ jobs:
               echo 'export PATH='"$ARBOR_PATH"':"$PATH"' >> "$BASH_ENV"
               source "$BASH_ENV"
               echo "Running arbor to install deps..."
-              arbor --help
+              uv run arbor --help
             popd
 
 workflows:
