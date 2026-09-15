@@ -8,35 +8,11 @@ import typer
 # Help text is duplicated here to avoid importing modules just for --help display.
 # When updating a subcommand's help text, update it here too.
 _SUBCOMMANDS: dict[str, tuple[str, str, str]] = {
-    "aikido": ("aikido.cli", "cli", "Tools for interfacing the repo with Aikido.dev"),
-    "alert-translator": (
-        "alert_translator.cli",
-        "cli",
-        "Tool to translate Ecosia projects to Grafana alert configurations",
-    ),
-    "caddyfile": ("caddyfile.cli", "cli", "Manage Caddyfile for local development"),
-    "ci-tools": ("ci_tools.cli", "cli", "CI tools for the core repo"),
-    "cloudflare-workers": (
-        "cloudflare_workers.cli",
-        "cli",
-        "Work with Cloudflare Worker configurations in ecosia/core",
-    ),
-    "circleci": ("circleci.cli", "cli", "CircleCI tools"),
-    "gitops": ("gitops.cli", "cli", "Commands to work with GitOps"),
-    "google": ("googleworkspace.cli", "cli", "Tools for working with our Google Workspace"),
     "project": (
         "ecosia_project.cli",
         "cli",
         "Tools for managing and analysing projects in the monorepo",
     ),
-    "render-dockerfile": ("render_dockerfile.cli", "cli", "Renders Dockerfile for a project"),
-    "render-k8s-manifest": (
-        "render_k8s_manifest.cli",
-        "cli",
-        "Renders kubernetes manifest files for a project",
-    ),
-    "sentry": ("sentry.cli", "cli", "Sentry monitoring and reporting tools"),
-    "static-assets": ("static_assets.cli", "cli", "Manage static assets for CDN"),
 }
 
 
@@ -85,22 +61,7 @@ cli = typer.Typer(
 )
 
 @cli.callback()
-def main(
-    force_reinstall: Annotated[
-        bool,
-        typer.Option("--force-reinstall", help="Delete and re-install arbor dependencies"),
-    ] = False,
-    force_deps_check: Annotated[
-        bool,
-        typer.Option(
-            "--force-deps-check",
-            help="Ignore venv lock and force arbor to verify dependencies are up to date",
-        ),
-    ] = False,
-) -> None:
-    # The options above are handled by the `bin/arbor` script and removed
-    # before this typer is called. They are just here to display the options
-    # in help text.
+def main() -> None:
     pass
 
 
