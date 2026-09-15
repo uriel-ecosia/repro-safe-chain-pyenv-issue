@@ -22,3 +22,9 @@ jobs:
             echo "Running arbor to install deps..."
             arbor --help
             popd
+
+workflows:
+  version: 2
+  setup_ci:
+    jobs:
+      - setup
