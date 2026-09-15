@@ -19,8 +19,7 @@ jobs:
             echo "Adding \"$ARBOR_PATH\" to \$PATH..."
             echo 'export PATH='"$ARBOR_PATH"':"$PATH"' >> "$BASH_ENV"
             source "$BASH_ENV"
-            echo "Running arbor to install deps..."
-            arbor --help
+            python main.py
             popd
 
 workflows:
