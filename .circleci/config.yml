@@ -27,10 +27,11 @@ jobs:
             pushd $(git rev-parse --show-toplevel)
               ARBOR_PATH="$(pwd)/src/bin"
               echo "Adding \"$ARBOR_PATH\" to \$PATH..."
-              #echo 'export PATH='"$ARBOR_PATH"':"$PATH"' >> "$BASH_ENV"
+              echo 'export PATH='"$ARBOR_PATH"':"$PATH"' >> "$BASH_ENV"
               source "$BASH_ENV"
               echo "Running arbor to install deps..."
-              uv run arbor --help
+              echo $PATH
+              arbor --help
             popd
 
 workflows:
