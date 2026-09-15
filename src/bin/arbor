@@ -8,6 +8,9 @@
 
 # This pattern is taken from Stack Overflow.
 # https://stackoverflow.com/a/246128
+
+set -x
+
 resolve_filename() {
   cd -- "$1" &> /dev/null && pwd
 }
