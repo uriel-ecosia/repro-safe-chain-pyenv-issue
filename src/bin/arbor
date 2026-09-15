@@ -9,14 +9,15 @@
 # This pattern is taken from Stack Overflow.
 # https://stackoverflow.com/a/246128
 
-set -x
-
 resolve_filename() {
   cd -- "$1" &> /dev/null && pwd
 }
 
 SCRIPT_DIR="$(resolve_filename "$(dirname -- "${BASH_SOURCE[0]}")")"
 ARBOR_PROJECT_ROOT="$(resolve_filename "$SCRIPT_DIR/..")"
+
+echo $SCRIPT_DIR
+echo $ARBOR_PROJECT_ROOT
 
 # Store arguments in array to preserve quotes
 ARGV=("$@")
@@ -43,4 +44,4 @@ print_error "🌲 arbor ${ARGV[*]}"
 
 # Run arbor - uv automatically handles both Python version and dependency synchronization
 
-exec uv run --project "$ARBOR_PROJECT_ROOT" arbor "${ARGV[@]}"
+exec uv --verbose run --project "$ARBOR_PROJECT_ROOT" arbor "${ARGV[@]}"
