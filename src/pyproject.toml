@@ -10,5 +10,8 @@ dependencies = [
     "click",
 ]
 
+[tool.uv]
+exclude-newer = "3 days"
+
 [project.scripts]
 arbor = "arbor.__main__.cli"
