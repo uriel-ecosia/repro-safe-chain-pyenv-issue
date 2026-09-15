@@ -36,24 +36,6 @@ dependencies = [
     "google-auth>=2.40.3",
 ]
 
-[dependency-groups]
-dev = [
-    "isort>=5.12.0",
-    "mypy>=1.11.1",
-    "types-deprecated>=1.2.9.20240311",
-    "types-pyyaml>=6.0.12.20240808",
-    "types-pygments>=2.18.0.20240506",
-    "types-requests>=2.32.0.20240712",
-    "types-tabulate>=0.9.0.20240106",
-    "google-api-python-client-stubs==1.31.0",
-    "google-auth-stubs==0.3.0",
-    "pyfakefs>=5.5.0",
-    "pytest>=8.3.2",
-    "pytest-cov>=5.0.0",
-    "pytest-watch>=4.2.0",
-    "pytest-xdist>=3.8.0",
-]
-
 [project.scripts]
 arbor = "arbor.__main__.cli"
 
