@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Setup
           command: |
-            pushd $(git parse --show-toplevel)
+            pushd $(git rev-parse --show-toplevel)
             ARBOR_PATH=$(pwd)/src
             echo "Adding \"$ARBOR_PATH\" to \$PATH..."
             echo 'export PATH='"$ARBOR_PATH"':"$PATH"' >> "$BASH_ENV"
