@@ -5,6 +5,23 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "arbor: install uv"
+          max_auto_reruns: 3
+          auto_rerun_delay: 5s
+          command: |
+            UV_VERSION=$(cat .uv_version)
+            echo "Installing uv version: $UV_VERSION"
+            curl -LsSf https://astral.sh/uv/${UV_VERSION}/install.sh | sh
+            echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$BASH_ENV"
+            source "$BASH_ENV"
+      # - run:
+      #     name: "Install safe-chain"
+      #     command: |
+      #       curl -fsSL https://github.com/AikidoSec/safe-chain/releases/download/1.5.20/install-safe-chain.sh -o /tmp/install-safe-chain.sh
+      #       echo "0ad25efe15d1fa56105157a454d647223e78eb0c53d1f85e3d10afcd722e7bfd  /tmp/install-safe-chain.sh" | sha256sum -c -
+      #       sh /tmp/install-safe-chain.sh --ci
+      #       rm /tmp/install-safe-chain.sh
+      - run:
           name: Setup
           command: |
             ARBOR_PATH=$(pwd)/src/bin
