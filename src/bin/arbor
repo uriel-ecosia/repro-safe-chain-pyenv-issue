@@ -44,4 +44,4 @@ print_error "🌲 arbor ${ARGV[*]}"
 
 # Run arbor - uv automatically handles both Python version and dependency synchronization
 
-exec uv --verbose run --project "$ARBOR_PROJECT_ROOT" arbor "${ARGV[@]}"
+exec uv --verbose run --project "$ARBOR_PROJECT_ROOT" arbo "${ARGV[@]}"

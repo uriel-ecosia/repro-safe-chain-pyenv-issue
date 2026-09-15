@@ -14,4 +14,4 @@ dependencies = [
 exclude-newer = "3 days"
 
 [project.scripts]
-arbor = "arbor.__main__.cli"
+arbo = "arbor.__main__.cli"
