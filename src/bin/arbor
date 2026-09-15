@@ -24,39 +24,6 @@ print_error() {
   echo "$1" >&2
 }
 
-dimmed() {
-    if [[ -n "$CI" ]]; then
-        echo "$1"
-    else
-        dim=$(tput dim)
-        normal=$(tput sgr0)
-        echo "${dim}$1${normal}"
-    fi
-}
-
-in_argv() {
-  local search_arg="$1"
-  for arg in "${ARGV[@]}"; do
-    if [[ "$arg" == "$search_arg" ]]; then
-      echo "true"
-      return
-    fi
-  done
-  echo "false"
-}
-
-remove_from_argv() {
-  local TO_BE_REMOVED="$1"
-  local NEW_ARGV=()
-
-  for arg in "${ARGV[@]}"; do
-    if [[ "$arg" != "$TO_BE_REMOVED" ]]; then
-      NEW_ARGV+=("$arg")
-    fi
-  done
-  ARGV=("${NEW_ARGV[@]}")
-}
-
 if  ! command -v uv &> /dev/null; then
   print_error "\`arbor\` requires \`uv\` to be installed. Please see the README for more details"
   exit 1
@@ -69,21 +36,7 @@ fi
 
 # ---------------------------------------------
 
-print_error "🌲 $(dimmed "arbor ${ARGV[*]}")"
-
-# Parse special arguments
-
-if [[ $(in_argv "--force-reinstall") == "true" ]]; then
-  print_error "Removing .venv and forcing reinstall"
-  rm -rf "$ARBOR_PROJECT_ROOT/.venv"
-  remove_from_argv "--force-reinstall"
-fi
-
-if [[ "$(in_argv "--force-deps-check")" == "true" ]]; then
-  print_error "Forcing dependency sync"
-  uv sync --project "$ARBOR_PROJECT_ROOT"
-  remove_from_argv "--force-deps-check"
-fi
+print_error "🌲 arbor ${ARGV[*]}"
 
 # Run arbor - uv automatically handles both Python version and dependency synchronization
 
